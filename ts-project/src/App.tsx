@@ -3,6 +3,11 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import DetailPage from "./components/DetailPage";
+import { IMyAlbum } from "./types/artists";
+
+interface SingleArtistProps {
+  album: IMyAlbum;
+}
 
 function App() {
   return (
@@ -11,7 +16,10 @@ function App() {
         <header className="App-header">
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/:detailpage" element={<DetailPage />} />
+            <Route
+              path="/detailpage"
+              element={<DetailPage /* album={SingleArtistProps} */ />}
+            />
           </Routes>
         </header>
       </div>
