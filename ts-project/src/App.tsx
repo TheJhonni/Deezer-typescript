@@ -2,12 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./components/MainPage";
-//import DetailPage from "./components/DetailPage";
+import DetailPage from "./components/DetailPage";
 
-/* interface SingleArtistProps {
-  album: IMyAlbum;
-}
- */
 function App() {
   return (
     <BrowserRouter>
@@ -15,7 +11,7 @@ function App() {
         <header className="App-header">
           <Routes>
             <Route path="/" element={<MainPage />} />
-            {/* <Route path="/SongId" element={<DetailPage />} /> */}
+            <Route path="/details/:id" element={<DetailPage />} />
           </Routes>
         </header>
       </div>

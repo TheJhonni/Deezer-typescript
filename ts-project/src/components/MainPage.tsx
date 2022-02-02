@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Form, Row, Col, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Track } from "../types/artists";
 //import { IQuery } from "../types/query";
 
@@ -29,7 +30,7 @@ const MainPage = () => {
   return (
     <div>
       <div>
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center align-items-start">
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Search for your Artist</Form.Label>
@@ -43,16 +44,18 @@ const MainPage = () => {
           </Form>
         </div>
       </div>
-      <Row xs={10} md={6} className="g-2">
+      <Row xs={10} md={5} className="g-2 my-2">
         {results
           .filter((track) => track.artist.name.toLowerCase().includes(query))
-          .slice(0, 10)
+          .slice(0, 30)
           .map((track) => (
-            <Col className="my-2 mx-2">
-              <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={track.album.cover_medium} />
-              </Card>
-            </Col>
+            <Link to={"details/" + track.id}>
+              <Col className="my-2 mx-4">
+                <Card className="m-2" style={{ width: "18rem" }}>
+                  <Card.Img variant="top" src={track.album.cover_medium} />
+                </Card>
+              </Col>
+            </Link>
           ))}
       </Row>
     </div>
